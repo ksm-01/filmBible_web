@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.benew.filmbible.mapper.video.VideoTagMapper">
+    <resultMap id="tagMap" type="VideoTagDto">
+        <id column="fb_vt_video_id" property="videoId" />
+        <result column="fb_vt_name" property="tagName"/>
+        <result column="fb_vt_order" property="tagOrder" />
+    </resultMap>
+
+    <select id="findAllVideoIdsByTag" resultType="String">
+        select
+            fb_vt_video_id
+        from FB_VIDEO_TAG
+    </select>
+
+    <select id="findTagById" resultMap="tagMap">
+        select
+            *
+        from FB_VIDEO_TAG
+        where fb_vt_video_id = #{videoId}
+    </select>
+</mapper>

@@ -1,0 +1,32 @@
+<script th:src="@{/js/lib/jquery-3.7.1.min.js}"></script>
+<script th:src="@{/js/lib/swiper-bundle-11.1.15.min.js}"></script>
+
+
+<!-- jquery ui 관련 -->
+<link rel="stylesheet" th:href="@{/css/lib/jquery-ui.css}">
+<script th:src="@{/js/lib/jquery-ui-1.12.1.js}"></script>
+<link rel="stylesheet" th:href="@{/css/lib/timepicker1.3.5.min.css}">
+<script th:src="@{/js/lib/timepicker1.3.5.min.js}"></script>
+
+<script th:src="@{/js/common/common.js}"></script>
+<script th:src="@{/js/common/validation.js}"></script>
+
+<th:block th:replace="~{/fragment/customAlert}"></th:block>
+<script th:inline="javascript">
+    const authenticated = [[${authenticated}]];
+    const contextPath = location.origin;
+
+    // 스크롤 자동으로 밑으로 가는것 막기
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
+    const urlObj = getPrevObj();
+    if (urlObj.error != null) {
+        warning(base64Decode(urlObj.error));
+        delete urlObj.error;
+        replaceParamToUrl(urlObj)
+    }
+
+
+</script>

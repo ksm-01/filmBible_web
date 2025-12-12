@@ -1,0 +1,339 @@
+<th:block th:fragment="custom_alert">
+    <link rel="stylesheet" th:href="@{/alert/custom_alert.css}">
+
+    <div class="popupswal function">
+        <div class="pbgswal function"></div>
+        <div class="swalview check">
+            <p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                </svg>
+                <span id="swal_text_function"></span></p>
+        </div>
+    </div>
+
+    <div class="custom_confirm">
+        <div class="custom_confirm_bg"></div>
+        <div class="custom_confirm_view">
+            <p><b id="custom_confirm_title"></b><br>
+                <span id="custom_confirm_content"></span>
+            </p>
+            <button class="custom_confirm_cancel2">취소</button>
+            <button class="custom_confirm_confirm2">확인</button>
+        </div>
+    </div>
+
+    <!--/*   ok,cancel 버튼 있는것   */-->
+    <div class="confirm_pop">
+        <div class="view">
+            <h2 class="con_title">Alert Title</h2>
+            <h3 class="con_content"></h3>
+
+            <div class="bt_box">
+                <button class="cancel">Cancel</button>
+                <button class="save">Ok</button>
+            </div>
+        </div>
+    </div>
+
+    <!--/*   ok 버튼 하나만 있는것   */-->
+    <div class="confirm_info">
+        <div class="view">
+            <h2 class="con_title">Alert Title</h2>
+            <h3 class="con_content"></h3>
+
+            <div class="bt_box">
+                <button class="save">Ok</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="trigger-wrap">
+        <div class="trigger-bg"></div>
+        <div class="trigger">
+
+        </div>
+    </div>
+
+
+
+    <script>
+        function newConfirm(title, content, successFunc, failFunc) {
+            if (title == null || title.length < 1)
+                title = 'Notification';
+
+            let confirmPop = $('.confirm_pop');
+            let titleElement = confirmPop.find('.con_title');
+            let contentElement = confirmPop.find('.con_content');
+            titleElement.html(title);
+            contentElement.html(content);
+
+
+            let okBtn = confirmPop.find('.save');
+            okBtn.off('click');
+            okBtn.click(() => {
+                if (successFunc != null)
+                    successFunc();
+                newConfirmClear();
+            });
+            let cancelBtn = confirmPop.find('.cancel');
+            cancelBtn.off('click');
+            cancelBtn.click(() => {
+                if (failFunc != null)
+                    failFunc();
+                newConfirmClear();
+            });
+
+            confirmPop.addClass('on');
+        }
+        async function newConfirmAsync(title, content) {
+            if (title == null || title.length < 1)
+                title = 'Notification';
+
+            let confirmPop = $('.confirm_pop');
+            let titleElement = confirmPop.find('.con_title');
+            let contentElement = confirmPop.find('.con_content');
+            titleElement.html(title);
+            contentElement.html(content);
+
+
+            return new Promise((resolve) => {
+                let okBtn = confirmPop.find('.save');
+                okBtn.off('click');
+                okBtn.click(() => {
+                    resolve(true);
+                    newConfirmClear();
+                });
+
+                let cancelBtn = confirmPop.find('.cancel');
+                cancelBtn.off('click');
+                cancelBtn.click(() => {
+                    resolve(false);
+                    newConfirmClear();
+                });
+
+                confirmPop.addClass('on');
+            });
+        }
+        function newConfirmClear() {
+            let confirmPop = document.querySelector('.confirm_pop');
+            confirmPop.classList.remove('on');
+        }
+
+        function info(title, content, s_func) {
+            if (title == null || title.length < 1)
+                title = 'Notification';
+
+            let confirmPop = $('.confirm_info');
+            let titleElement = confirmPop.find('.con_title');
+            let contentElement = confirmPop.find('.con_content');
+            titleElement.text(title);
+            contentElement.html(content);
+
+
+            let okBtn = confirmPop.find('.save');
+            okBtn.off('click');
+            okBtn.click(() => {
+                if (s_func != null)
+                    s_func();
+                infoClear();
+            });
+            confirmPop.addClass('on');
+        }
+        function infoClear() {
+            let confirmPop = document.querySelector('.confirm_info');
+            confirmPop.classList.remove('on');
+        }
+
+        // customAlert 간략화
+        function ok(
+            text,
+            func
+        ) {
+            const textElement = document.querySelector('#swal_text_function');
+            textElement.innerHTML = textToHtml(text);
+
+            const iconWrapper = document.querySelector('.swalview');
+            iconWrapper.classList.add('check');
+            iconWrapper.classList.remove('warn');
+
+            let popupSwal = $('.popupswal');
+            popupSwal.off('click');
+            popupSwal.on('click', () => {
+                resetForAlert();
+                if (func != null)
+                    func();
+            });
+
+            const alertBack = document.querySelector('.popupswal');
+            alertBack.classList.add('in');
+        }
+        function okReload(
+            text
+        ) {
+            ok(text, () => {
+                location.reload();
+            });
+        }
+        function warning(
+            text,
+            func
+        ) {
+            const textElement = document.querySelector('#swal_text_function');
+            textElement.innerHTML = textToHtml(text);
+
+            const iconWrapper = document.querySelector('.swalview');
+            iconWrapper.classList.remove('check');
+            iconWrapper.classList.add('warn');
+
+            let clickElement = $('.pbgswal');
+            clickElement.off('click');
+            clickElement.on('click', () => {
+                resetForAlert();
+                if (func != null)
+                    func();
+            });
+
+            const alertBack = document.querySelector('.popupswal');
+            alertBack.classList.add('in');
+
+        }
+        function warningReload(
+            text
+        ) {
+            warning(text, () => {
+                location.reload();
+            });
+        }
+
+        function breakAlert(
+            text,
+            func
+        ) {
+            warning(text, () => {
+                if (func != null)
+                    func();
+            });
+
+            throw new Error(text);
+        }
+        function focusAlert(
+            text,
+            element
+        ) {
+            warning(text, () => {
+                if (element != null) {
+                    if (typeof element === 'string')
+                        element = document.querySelector(element);
+                    element.focus();
+                }
+            });
+
+            throw new Error(text);
+        }
+        function sessionAlert() {
+            warning('로그인이 만료되었어요. 다시 로그인해주세요.', () => {
+                movePage('/login');
+            });
+        }
+        function errorAlert() {
+            warning('서버에 문제가 발생하였습니다. 관리자에게 문의해 주세요.');
+        }
+
+        // custom_alert 초기화
+        function resetForAlert() {
+            let popupSwal = $('.popupswal');
+            popupSwal.removeClass('in');
+            popupSwal.off('click');
+
+            let clickElement = $('.pbgswal');
+            clickElement.off('click');
+        }
+
+        function resChecker(
+            res,
+            offLoading = true
+        ) {
+            if (offLoading)
+                loadingHide();
+
+            if (!res.success) {
+                const message = res.message;
+                console.log("false!")
+                if (res.refresh)
+                    warningReload(base64Decode(message));
+                else
+                    warning(base64Decode(message));
+                return false;
+            }
+
+            return true;
+        }
+
+        function errorChecker(
+            e,
+            offLoading = true
+        ) {
+            console.error(e);
+            if (offLoading)
+                loadingHide();
+            if (e.status === 401) {
+                sessionAlert();
+                return;
+            }
+            if (e.status === 403) {
+                warningReload('권한이 부족하여 접근할 수 없습니다.');
+                return;
+            }
+            errorAlert();
+        }
+
+        function notReady() {
+            event.stopPropagation();
+            // 이거 달아놓은 곳 찾아서 기능 넣기
+            ok('아직 준비중입니다.');
+        }
+        function needLogin() {
+            event.stopPropagation();
+            // 이거 달아놓은 곳 찾아서 기능 넣기
+            warning('비회원의 경우 사용하실 수 없는 기능입니다.');
+            throw new Error('need login');
+        }
+
+
+
+
+        function loadingShow(targetElement) {
+            if (targetElement != null) {
+                let sourceElement = document.querySelector('.trigger-wrap').cloneNode(true);
+                sourceElement.setAttribute('id', 'copied_loading_pop');
+                sourceElement.classList.add('on');
+
+                if (typeof targetElement === 'string')
+                    targetElement = document.querySelector(targetElement);
+
+                targetElement.insertAdjacentElement('afterbegin', sourceElement);
+            } else
+                $(".trigger-wrap").addClass("on");
+        }
+
+        function loadingHide(targetElement) {
+            if (targetElement != null) {
+                if (typeof targetElement === 'string')
+                    targetElement = document.querySelector(targetElement);
+
+                targetElement = targetElement.querySelector('.trigger-wrap');
+                if (targetElement != null)
+                    targetElement.remove();
+            } else
+                $(".trigger-wrap").removeClass("on");
+        }
+    </script>
+</th:block>

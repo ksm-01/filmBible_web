@@ -1,0 +1,25 @@
+server:
+  port: 8080
+  tomcat:
+    max-http-form-post-size: 1000MB  # post 요청 사이즈 (MultipartFile Dto로 감싸서 받을 때 필요)
+
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 50MB # 파일 하나의 사이즈
+      max-request-size: 2500MB  # 총 사이즈
+
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://183.111.199.217/benewdev2025
+    username: benewdev2025
+    password: qb30nh@!
+
+
+mybatis:
+  type-aliases-package: dev.benew.filmbible.domain.dto
+  mapper-locations: classpath:/mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
