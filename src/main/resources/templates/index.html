@@ -1,10 +1,301 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=yes">
+    <title>main</title>
+    <link rel="stylesheet" th:href="@{/css/font.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/lib/swiper11.min.css}" />
+
+    <script th:src="@{/js/lib/headroom.js}"></script>
+    <th:block th:replace="~{/fragment/defaultJs}"></th:block>
 </head>
 <body>
-dasdasdsadas
+
+<th:block th:replace="~{/fragment/header}"></th:block>
+
+
+
+
+
+ <div class="main">
+    <div class="sec1">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                  <div class="swiper-slide" style="background:url('img/main_bg6.jpg')no-repeat center; background-size:cover;">
+                  </div>
+                  <div class="swiper-slide" style="background:url('img/main_bg10.jpg')no-repeat center; background-size:cover;">
+                  </div>
+                  <div class="swiper-slide" style="background:url('img/main_bg3.jpg')no-repeat center; background-size:cover;">
+                  </div>
+                  <div class="swiper-slide" style="background:url('img/main_bg1.jpg')no-repeat center; background-size:cover;">
+                  </div>
+                  <div class="swiper-slide" style="background:url('img/main_bg2.jpg')no-repeat center; background-size:cover;">
+                  </div>
+                  <div class="swiper-slide" style="background:url('img/main_bg11.jpg')no-repeat center; background-size:cover;">
+                  </div>
+                  <div class="swiper-slide" style="background:url('img/main_bg7.jpg')no-repeat center; background-size:cover;">
+                  </div>
+              </div>
+              <div class="swiper-pagination"></div>
+         </div>
+    </div>
+
+    <div class="sec2">
+        <h2>Film Making</h2>
+        <h3>FILM BIBLE</h3>
+
+        <div class="swiper3">
+          <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="img"><img th:src="@{/img/pro_test2.svg}"></div>
+                <p>Cinematic SFX Pack</p>
+                <span>FILM BIBLE</span>
+              </div>
+              <div class="swiper-slide">
+                <div class="img"><img th:src="@{/img/pro_test3.svg}"></div>
+                <p>Cinematic SFX Pack</p>
+                <span>FILM BIBLE</span>
+              </div>
+              <div class="swiper-slide">
+                <div class="img"><img th:src="@{/img/pro_test4.svg}"></div>
+                <p>Ultimate Series Lightroom</p>
+                <span>FILM BIBLE</span>
+              </div>
+              <div class="swiper-slide">
+                <div class="img"><img th:src="@{/img/pro_test5.svg}"></div>
+                <p>Complete Series Lightroom</p>
+                <span>FILM BIBLE</span>
+              </div>
+              <div class="swiper-slide">
+                <div class="img"><img th:src="@{/img/pro_test1.svg}"></div>
+                <p>Cinematic SFX Pack</p>
+                <span>FILM BIBLE</span>
+              </div>
+          </div>
+        </div>
+
+        <div class="swiper-button-next_mid-banner"><img th:src="@{/img/slider_arrow4.svg}"></div>
+        <div class="swiper-button-prev_mid-banner"><img th:src="@{/img/slider_arrow3.svg}"></div>
+    </div>
+
+
+    <div class="sec3">
+        <div class="wid">
+            <button><span>FILM BIBLE</span> PORTFOLIO</button>
+            <button>FILM CLASS</button>
+        </div>
+    </div>
+
+
+    <div class="sec4">
+        <div class="wid">
+            <div class="box1">
+                <img src="img/sec4_logo.svg" class="logo">
+                <h2>FILM BUBLE</h2>
+                <h3>Frame by frame, your story lives</h3>
+                <p>우리는 장면을 쫓는 사람들이 아니라 <br class="mo">장면 속에 담긴 감정을 찾는 사람들입니다.<br>
+                한 번 지나가면 다시 오지 않는 순간을, <br class="mo">가장 아름다운 형태로 남기는 것.<br>
+                그것이 우리가 하는 일입니다.<br><br>
+
+                필름은 시간이 지나도 변하지 않고, <br class="mo">당신이 느꼈던 그 감정, 그 공간의 공기,<br>
+                그 순간의 온도를 있는 그대로 보관합니다.<br>
+                우리의 작업은 바로 그 시간을 영원히 저장하는 일입니다.<br><br>
+
+                당신의 인생에 영화 같은 장면이 필요하다면<br>
+                우리는 그 장면을 만들어 드릴 준비가 되어 있습니다.</p>
+
+                <button class="more">VIEW MORE</button>
+            </div>
+
+            <div class="box2">
+                <img src="img/sec4_img.jpg">
+                <p>Film the moment</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="sec5">
+        <div class="wid">
+            <h2>Flim Class</h2>
+            <h3>FILM BIBLE</h3>
+
+            <div class="swiper2">
+              <div class="swiper-wrapper">
+                  <div class="swiper-slide" th:each="homeVideo : ${homeVideoList}"
+                       th:data-link="${homeVideo.videoUrl}" onclick="movePageTab(this.dataset.link)">
+                    <div class="img" th:style="|background:url('${homeVideo.videoThumb}')no-repeat center; background-size:cover;|">
+                        <span>Flim Class 01</span>
+                    </div>
+
+                    <div class="txt">
+                        <p th:text="${homeVideo.videoTitle}">스피드램핑 쉽게 마스터 하기</p>
+                        <span>24프레임 설정은 위 영상 처럼 가까운 피사체를 촬영할때 스피드램핑을 원활하게 촬영할 수 있는 세팅값 입니다.</span>
+
+                        <img th:src="@{/img/play_icon.svg}">
+                    </div>
+                  </div>
+
+<!--                  <div class="swiper-slide" th:each="homeVideo : ${homeVideoList}">-->
+<!--                    <div class="img" style="background:url('img/main_bg2.jpg')no-repeat center; background-size:cover;">-->
+<!--                        <span>Flim Class 01</span>-->
+<!--                    </div>-->
+
+<!--                    <div class="txt">-->
+<!--                        <p th:text="${homeVideo.videoTitle}">스피드램핑 쉽게 마스터 하기</p>-->
+<!--                        <span>24프레임 설정은 위 영상 처럼 가까운 피사체를 촬영할때 스피드램핑을 원활하게 촬영할 수 있는 세팅값 입니다.</span>-->
+<!--                        <img th:src="@{/img/play_icon.svg}">-->
+<!--                    </div>-->
+<!--                  </div>-->
+
+<!--                  <div class="swiper-slide">-->
+<!--                    <div class="img" style="background:url('img/main_bg6.jpg')no-repeat center; background-size:cover;">-->
+<!--                        <span>Flim Class 01</span>-->
+<!--                    </div>-->
+<!--                    <div class="txt">-->
+<!--                        <p>스피드램핑 쉽게 마스터 하기</p>-->
+<!--                        <span>24프레임 설정은 위 영상 처럼 가까운 피사체를 촬영할때 스피드램핑을 원활하게 촬영할 수 있는 세팅값 입니다.</span>-->
+<!--                        <img th:src="@{/img/play_icon.svg}">-->
+<!--                    </div>-->
+<!--                  </div>-->
+
+<!--                  <div class="swiper-slide">-->
+<!--                    <div class="img" style="background:url('img/main_bg1.jpg')no-repeat center; background-size:cover;">-->
+<!--                        <span>Flim Class 01</span>-->
+<!--                    </div>-->
+<!--                    <div class="txt">-->
+<!--                        <p>스피드램핑 쉽게 마스터 하기</p>-->
+<!--                        <span>24프레임 설정은 위 영상 처럼 가까운 피사체를 촬영할때 스피드램핑을 원활하게 촬영할 수 있는 세팅값 입니다.</span>-->
+<!--                        <img src="img/play_icon.svg">-->
+<!--                    </div>-->
+<!--                  </div>-->
+
+<!--                  <div class="swiper-slide">-->
+<!--                    <div class="img" style="background:url('img/main_bg8.jpg')no-repeat center; background-size:cover;">-->
+<!--                        <span>Flim Class 01</span>-->
+<!--                    </div>-->
+<!--                    <div class="txt">-->
+<!--                        <p>스피드램핑 쉽게 마스터 하기</p>-->
+<!--                        <span>24프레임 설정은 위 영상 처럼 가까운 피사체를 촬영할때 스피드램핑을 원활하게 촬영할 수 있는 세팅값 입니다.</span>-->
+<!--                        <img src="img/play_icon.svg">-->
+<!--                    </div>-->
+<!--                  </div>-->
+
+              </div>
+            </div>
+
+            <button class="more">VIEW MORE</button>
+        </div>
+    </div>
+</div> 
+
+
+<th:block th:replace="~{fragment/footer}"></th:block>
+
+
+<script type="text/javascript">
+
+/* header */
+(function () {
+  var header = new Headroom(document.querySelector("#header"), {
+    tolerance: 5,
+    offset: 100,
+    classes: {
+      initial: "animated",
+      pinned: "slideDown",
+      unpinned: "slideUp"
+    }
+  });
+  header.init();
+})();
+
+$(".bar").on('click',function(){ 
+    $('header').addClass('white');
+    $('.hd_menu_overlay').addClass('on');
+    $('header .bar').hide();
+    $('header .menu_close').show();
+    
+    setTimeout(function () {
+        $('.hd_menu').addClass('on');
+    }, 1000);
+});
+
+
+$(".menu_close").on('click',function(){ 
+    $('.hd_menu').removeClass('on');
+    $('header .bar').show();
+    $('header .menu_close').hide();
+    
+    setTimeout(function () {
+        $('header').removeClass('white');
+        $('.hd_menu_overlay').removeClass('on');
+    }, 500);
+});
+
+/* header end */
+
+
+
+const swiper = new Swiper('.swiper', {
+    effect:'fade',
+    loop:true,
+    autoplay: {
+        delay: 10000,
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+});
+
+
+const swiper2 = new Swiper('.swiper2', {
+    spaceBetween:10,
+    slidesPerView: 1.2,
+    centeredSlides: true,
+    initialSlide: 2,
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+      1200: {
+        slidesPerView: 3,
+        spaceBetween: 40,
+      }
+    },
+});
+
+
+const swiper3 = new Swiper('.swiper3', {
+    navigation: {
+        nextEl: ".swiper-button-next_mid-banner",
+        prevEl: ".swiper-button-prev_mid-banner",
+    },
+    scrollbar: {
+      el: ".swiper-scrollbar",
+      // hide: true,
+    },
+    spaceBetween:5,
+    slidesPerView: 2,
+
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+      1200: {
+        slidesPerView: 5,
+        spaceBetween: 30,
+      }
+    },
+});
+
+</script>
 </body>
 </html>
+
+
