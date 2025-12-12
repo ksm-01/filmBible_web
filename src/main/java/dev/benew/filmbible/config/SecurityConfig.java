@@ -7,8 +7,11 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+
+import javax.servlet.http.HttpServletResponse;
 
 
 @Configuration
@@ -52,10 +55,38 @@ public class SecurityConfig {
                       .logoutSuccessUrl("/?success=" + CommonUtil.base64Encode("로그아웃 되었습니다."))
               )
               .rememberMe(re -> re
-                      .rememberMeCookieName("remember-me-global")
+                      .rememberMeCookieName("remember-me-filmBible")
                       .rememberMeParameter("remember")
                       .userDetailsService(userDetailsService)
                       .tokenValiditySeconds(60*60*24*7) // 7일
+              )
+              .exceptionHandling(ex -> ex
+                      .authenticationEntryPoint((request, response, authException) -> {
+                          if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
+
+                              response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // 401
+                              response.setContentType("application/json;charset=UTF-8");
+                              response.getWriter().write("{\"error\": \"Unauthorized\"}");
+                          } else
+                              response.sendRedirect("/login");
+                      })
+                      .accessDeniedHandler((request, response, authException) -> {
+                          if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
+
+                              response.setStatus(HttpServletResponse.SC_FORBIDDEN); // 403
+                              response.setContentType("application/json;charset=UTF-8");
+                              response.getWriter().write("{\"error\": \"FORBIDDEN\"}");
+                          } else
+                              response.sendRedirect("/login");
+                      })
+              )
+              .headers(headers -> headers
+                      .frameOptions().disable()
+                      .contentSecurityPolicy(csp -> csp
+                              .policyDirectives(
+                                      "frame-ancestors 'self' http://localhost:20005 https://admin.xn--vo5b23idue.com"
+                              )
+                      )
               )
               .csrf().disable()
               .cors().disable()

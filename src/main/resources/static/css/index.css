@@ -1,0 +1,150 @@
+.main .wid {max-width:1380px; width:100%; margin:0 auto; padding:0 20px;}
+
+.main .sec1 .swiper {width:100%; height:100vh;}
+.main .sec1 .swiper .swiper-slide {width:100%; height:100%; }
+
+.main .sec1 .swiper .swiper-horizontal>.swiper-pagination-bullets, .main .sec1 .swiper  .swiper-pagination-bullets.swiper-pagination-horizontal, .main .sec1 .swiper .swiper-pagination-custom, .swiper-pagination-fraction {bottom:50px !important;}
+.main .sec1 .swiper .swiper-pagination-bullet {width:30px !important; height:4px !important; border-radius:0px !important; margin:0 2px !important; background:#00000060 !important;opacity: 1 !important; transition: .3s;}
+.main .sec1 .swiper .swiper-pagination-bullet-active {width:30px !important; background:#fff !important;}
+
+.main .sec1 .swiper .swiper-button-prev, .main .sec1 .swiper .swiper-rtl .swiper-button-next {left:-50px; }
+.main .sec1 .swiper .swiper-button-next, .main .sec1 .swiper .swiper-button-prev {color:#fff !important; font-size:24px !important; width:24px !important; height:24px !important; opacity: 0; transition: .3s;}
+.main .sec1 .swiper .swiper-button-next:after, .main .sec1 .swiper .swiper-button-prev:after {font-size :24px !important; }
+.main .sec1 .swiper .swiper-button-next, .main .sec1 .swiper .swiper-rtl .swiper-button-prev {right:-50px;}
+.main .sec1 .swiper .swiper-button-next:before {content:''; position:absolute; width:45px; height:57px; border-radius:10px; background:#00000080; left:-12PX; top:-16px; z-index: -1;}
+.main .sec1 .swiper .swiper-button-prev:before {content:''; position:absolute; width:45px; height:57px; border-radius:10px; background:#00000080; left:-9PX; top:-16px; z-index: -1;}
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {left: 60px !important; width:auto !important;}
+.main .sec1 .swiper:hover .swiper-button-next, .main .sec1 .swiper:hover .swiper-button-prev {opacity: 1;}
+
+
+
+
+.main .sec2 {text-align: center; padding:0 20px; max-width:1420px; width:100%; margin:50px auto 70px auto; }
+.main .sec2 h2 {font-size:40px; color:#333; font-family: "Baskervville", serif; font-style:italic; font-weight:400; letter-spacing: -.3px}
+.main .sec2 h3 {font-size:14px; font-weight:400; letter-spacing: 4px; color:#333; margin-top:7px;}
+
+.main .sec2 .swiper3 {width:100%; overflow: hidden; margin-top:40px;}
+.main .sec2 .swiper3 p {margin-top:3px; font-family: "Constantia W01 Regular"; color:#333; font-size:16px; font-style: italic; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.main .sec2 .swiper3 span {display:inline-block; width:100%; font-size:10px; margin-top:5px; color:#333; letter-spacing: 2px; font-weight:300;}
+.main .sec2 .swiper3 .swiper-slide {cursor: pointer;}
+.main .sec2 .swiper3 .swiper-slide .img {height:285px;}
+.main .sec2 .swiper3 .swiper-slide .img img {height:100%; margin-left:-3px;}
+.main .sec2 .swiper-button-next_mid-banner {position: absolute; right:-62px; top:162px; cursor: pointer; display: none;}
+.main .sec2 .swiper-button-prev_mid-banner {position: absolute; left:-62px; top:162px; cursor: pointer; display: none;}
+
+
+
+
+.main .sec3 .wid {border-top:1px solid #555;}
+.main .sec3 .wid:after {content:''; clear:both; display: table;}
+.main .sec3 button {float:left; width:50%; position: relative; padding:35px 0; font-size:14px; color:#333; letter-spacing: 4px; font-weight:600; border:none; background:none;}
+.main .sec3 button:first-child:after {content:''; position: absolute; right:0; top:31px; height:24px; width:1px; background:#555;}
+
+
+
+
+.main .sec4 {padding:70px 0; position: relative; z-index: 1;}
+.main .sec4:after {content:''; position: absolute; left:0; bottom:0; width:100%; height:409px; background:rgba(255,255,255,.15); z-index: -1;}
+.main .sec4 .wid:after {content:''; clear:both; display: table;}
+.main .sec4 .box1 {float:left; width:50%; text-align: center; }
+.main .sec4 .box1 h2 {font-size:30px; font-family: "Baskervville", serif; font-style:italic; font-weight:500; margin-top:5px; color:#333;}
+.main .sec4 .box1 h3 {font-size:11px; color:#333; margin-top:9px; letter-spacing: 3px; font-weight:400;}
+.main .sec4 .box1 p {margin-top:48px; font-size:14px; color:#333; font-weight:400; line-height:1.7em; }
+.main .sec4 .box1 p .mo {display: none;}
+.main .sec4 .box1 .more {margin-top:60px; font-size:13px; color:#333; border:none; border-bottom:1px solid #333; letter-spacing: 3px; background:none; font-weight:600; padding-bottom:2px;}
+
+.main .sec4 .box2 {float:left; width:50%; text-align: center;}
+.main .sec4 .box2 img {width:100%; }
+.main .sec4 .box2 p {margin-top:20px; font-size:11px; color:#333; font-weight:500; letter-spacing: 3px; }
+
+
+
+
+
+
+.main .sec5 {padding:65px 0 90px 0; overflow: hidden;}
+.main .sec5 h2 {font-size:40px; color:#333; font-family: "Baskervville", serif; font-style:italic; font-weight:400; letter-spacing: -.3px; text-align:center;}
+.main .sec5 h3 {font-size:14px; font-weight:400; letter-spacing: 4px; color:#333; margin-top:7px; text-align: center;}
+.main .sec5 .swiper2 {margin-top:40px;}
+.main .sec5 .swiper2 .swiper-slide {background:#111; padding:3px; border-radius:23px; cursor: pointer;}
+.main .sec5 .swiper2 .img {width:100%; padding-top:60%; border-radius:21px 21px 0 0; position: relative;}
+.main .sec5 .swiper2 .img span {position: absolute; left:7px; top:7px; padding:9px 15px; border-radius:50px; background:rgba(0,0,0,.2); backdrop-filter: blur(4px); font-size:13px; color:#ffffffdb; font-family: "Constantia W01 Regular"; font-weight:300;}
+.main .sec5 .swiper2 .img:after {content:''; position: absolute; left:0; bottom:0; width:100%; height:70px; background: linear-gradient(to top, #111, #11111100);}
+.main .sec5 .swiper2 .txt {padding:25px 20px 20px 20px;}
+.main .sec5 .swiper2 .txt p {font-size:16px; color:#D7D6D4; font-weight:500; }
+.main .sec5 .swiper2 .txt span {display: inline-block; width:100%; margin-top:5px; font-size:14px; color:#747474; font-weight:400;  overflow: hidden; text-overflow: ellipsis;  white-space: nowrap;}
+.main .sec5 .swiper2 .txt img {margin-top:22px ;}
+
+.main .sec5 .more { font-size:13px; color:#333; border:none; border-bottom:1px solid #333; letter-spacing: 3px; background:none; font-weight:600; padding-bottom:2px; display: block; margin:45px auto 0 auto;}
+
+
+
+
+
+@media screen and (max-width:1200px) {
+    .main .sec4 .box1 {width:100%;}
+    .main .sec4 .box2 {width:100%; margin-top:50px;}
+}
+
+
+
+@media screen and (max-width:1023px) {
+    .main .sec1 .swiper {height:auto;}
+    .main .sec1 .swiper .swiper-slide {padding-top:70%;}
+    .main .sec1 .swiper .swiper-horizontal>.swiper-pagination-bullets, .main .sec1 .swiper .swiper-pagination-bullets.swiper-pagination-horizontal, .main .sec1 .swiper .swiper-pagination-custom, .swiper-pagination-fraction {bottom:22px !important; left:50% !important; transform: translate(-50%,0) !important; width:100% !important;}
+
+    .main .sec2 { margin-bottom:50px;}
+    .main .sec2 h2 {font-size:30px;}
+    .main .sec2 h3 {font-size:12px;}
+    .main .sec2 .swiper3 {margin-top:30px;}
+    .main .sec2 .swiper3 .swiper-slide .img {height:245px;}
+    .main .sec2 .swiper3 p {font-size:15px;}
+
+    .main .sec3 button {padding:25px 0; }
+    .main .sec3 button:first-child:after {top:21px;}
+
+
+    .main .sec5 h2 {font-size:30px;}
+    .main .sec5 h3 {font-size:12px;}
+
+}
+
+
+
+@media screen and (max-width:767px) {
+    .main .sec2 {margin:35px auto 30px auto; padding:0;}
+    .main .sec2 h2 {font-size:25px;}
+    .main .sec2 h3 {font-size:10px;}
+    .main .sec2 .swiper3 {margin-top:20px; padding:0 20px;}
+    .main .sec2 .swiper3 p {font-size:14px;}
+    .main .sec2 .swiper3 span {font-size:9px;}
+    .main .sec2 .swiper3 .swiper-slide .img {height:190px;}
+
+
+    .main .sec3 button span {display: none;}
+    .main .sec3 .wid {padding: 0;}
+    .main .sec3 button {font-size:13px; padding:18px 0; letter-spacing: 2px; font-weight:500;}
+    .main .sec3 button:first-child:after {height:17px; top:18px;}
+
+    .main .sec4 {padding:25px 0 35px 0;}
+    .main .sec4 .box1 img {width:40px;}
+    .main .sec4 .box1 h2 {font-size:25px;}
+    .main .sec4 .box1 h3 {font-size:10px; letter-spacing: 2px; margin-top:7px;}
+    .main .sec4 .box1 p {font-size:13px; line-height:1.6em; margin-top:38px;}
+    .main .sec4 .box1 p .mo {display: block;}
+    .main .sec4:after {height:calc(100% - 133px);}
+    .main .sec4 .box1 .more {margin-top:35px;}
+    .main .sec4 .box2 {margin-top:35px;}
+
+
+    .main .sec5 {padding:35px 0 50px 0}
+    .main .sec5 h2 {font-size:25px;}
+    .main .sec5 h3 {font-size:10px;}
+    .main .sec5 .swiper2 {margin-top:25px;}
+    .main .sec5 .swiper2 .txt {padding-top:20px;}
+    .main .sec5 .swiper2 .txt p {font-size:15px;}
+    .main .sec5 .swiper2 .txt span {font-size:13px;}
+    .main .sec5 .swiper2 .txt img {margin-top:19px;}
+    .main .sec5 .more {margin-top:35px;}
+    .main .sec5 .swiper2 .img:after {height:50px;}
+}

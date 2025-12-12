@@ -1,0 +1,19 @@
+package dev.benew.filmbible.domain.dto;
+
+import lombok.Data;
+
+import java.time.LocalDateTime;
+
+@Data
+public class PlayListDto {
+    private Long playListIdx;
+    private String playListId;
+    private String playListTitle;
+    private String playListThumb;
+    private String playListFullPath;
+    private Long videoCount;
+    private String playListStatus;
+    private LocalDateTime regDate;
+    private LocalDateTime createdDate;
+    private LocalDateTime refreshDate;
+}

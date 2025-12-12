@@ -16,4 +16,6 @@ public interface VideoMapper {
 
     VideoDto findByVideoId(@Param("videoId") String videoId);
 
+    List<VideoDto> homeVideoList();
+
 }

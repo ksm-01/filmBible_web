@@ -15,4 +15,9 @@ class FilmbibleApplicationTests {
     void contextLoads() {
     }
 
+
+    @Test
+    void homeVideoList() {
+        System.out.println(videoMapper.homeVideoList());
+    }
 }

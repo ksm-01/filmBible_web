@@ -40,4 +40,14 @@
         from FB_VIDEO
         where fb_video_id = #{videoId}
     </select>
+
+    <select id="homeVideoList" resultMap="videoMap">
+        SELECT *
+        FROM FB_VIDEO AS v
+        JOIN FB_PLAYLIST_has_VIDEO AS phv ON v.fb_video_id = phv.fb_phv_video_id
+        JOIN FB_PLAYLIST AS p ON phv.fb_phv_playlist_id = p.fb_playlist_id
+        WHERE p.fb_playlist_title = '영상 강의'
+        AND v.fb_video_status = 'public'
+        ORDER BY v.fb_video_created_date DESC LIMIT 5;
+    </select>
 </mapper>
